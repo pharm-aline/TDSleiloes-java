@@ -3,6 +3,7 @@ package view;
 
 import dto.ProdutosDTO;
 import dao.ProdutosDAO;
+import javax.swing.JOptionPane;
 
 
 public class cadastroVIEW extends javax.swing.JFrame {
@@ -135,12 +136,14 @@ public class cadastroVIEW extends javax.swing.JFrame {
         String valor = cadastroValor.getText();
         String status = "A Venda";
         produto.setNome(nome);
-        produto.setValor(Integer.parseInt(valor));
+        produto.setValor(Double.parseDouble(valor));
         produto.setStatus(status);
         
         ProdutosDAO produtodao = new ProdutosDAO();
         produtodao.cadastrarProduto(produto);
         
+        JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!"
+    );
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdutosActionPerformed

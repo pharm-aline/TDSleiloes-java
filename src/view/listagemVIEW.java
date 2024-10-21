@@ -191,8 +191,8 @@ public class listagemVIEW extends javax.swing.JFrame {
     private void listarProdutos(){
         try {
             ProdutosDAO produtosdao = new ProdutosDAO();
-            
-            DefaultTableModel model = (DefaultTableModel) listaProdutos.getModel();
+            String[] colunas = { "ID", "Nome", "Valor", "Status" };
+            DefaultTableModel model = new DefaultTableModel (colunas,0);
             model.setNumRows(0);
             
             ArrayList<ProdutosDTO> listagem = produtosdao.listarProdutos();
@@ -205,6 +205,8 @@ public class listagemVIEW extends javax.swing.JFrame {
                     listagem.get(i).getStatus()
                 });
             }
+            listaProdutos.setModel(model);
+            jScrollPane1.setViewportView(listaProdutos);
         } catch (Exception e) {
         }
     
